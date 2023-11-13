@@ -1,17 +1,31 @@
-package ch.hslu.oop.sw08.temperature;
+package ch.hslu.oop.sw09.temperature;
 
 import java.util.Objects;
 
 public final class Temperature implements Comparable<Temperature> {
     private static final double KELVIN_OFFSET = 273.15d;
-    private double celsius;
+    private final double celsius;
 
-    public Temperature() {
+    private Temperature() {
         this(20);
     }
 
-    public Temperature(final double celsius) {
-        this.setCelsius(celsius);
+    private Temperature(final double celsius) {
+        if (celsius < -KELVIN_OFFSET) throw new IllegalArgumentException("Not a valid temperature: " + celsius + "°C");
+
+        this.celsius = celsius;
+    }
+
+    public static Temperature createFromCelsius(final double celsius) {
+        return new Temperature(celsius);
+    }
+
+    public static Temperature createFromKelvin(final double kelvin) {
+        return new Temperature(convertKelvinToCelsius(kelvin));
+    }
+
+    public static Temperature createFromFahrenheit(final double fahrenheit) {
+        return new Temperature(convertFahrenheitToCelsius(fahrenheit));
     }
 
     public double getTemperature(final TemperatureUnit unit) {
@@ -39,24 +53,6 @@ public final class Temperature implements Comparable<Temperature> {
 
     public double getFahrenheit() {
         return getTemperature(TemperatureUnit.Fahrenheit);
-    }
-
-    public void setCelsius(final double celsius) {
-        this.celsius = celsius;
-    }
-
-    public void setTemperature(final double temperature, final TemperatureUnit unit) {
-        switch (unit) {
-            case Celsius:
-                this.setCelsius(temperature);
-                break;
-            case Kelvin:
-                this.setCelsius(convertKelvinToCelsius(temperature));
-                break;
-            case Fahrenheit:
-                this.setCelsius(convertFahrenheitToCelsius(temperature));
-                break;
-        }
     }
 
     public static double convertCelsiusToKelvin(final double celsius) {
