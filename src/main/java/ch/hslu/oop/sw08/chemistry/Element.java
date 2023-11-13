@@ -22,23 +22,41 @@ public enum Element {
         return this.fusionTemperature;
     }
 
+    /**
+     * Gets name of element.
+     * @return name of element (first letter capitalized).
+     */
     public final String getName() {
         return this.name().substring(0, 1).toUpperCase() +
                 this.name().substring(1).toLowerCase();
     }
 
+    /**
+     * Gets aggregation state depending on given temperature.
+     * @param temperature temperature in celsius.
+     * @return aggregation state.
+     */
     public final AggregationState getAggregationState(double temperature) {
         return temperature < this.fusionTemperature ?
                 AggregationState.SOLID : temperature < this.boilingTemperature ?
                 AggregationState.LIQUID : AggregationState.GAS;
     }
 
+    /**
+     * Gets sentence describing aggregation state depending on given temperature.
+     * @param temperature temperature in celsius.
+     * @return aggregation state sentence.
+     */
     public final String getAggregationStateString(double temperature) {
         AggregationState aggregationState = getAggregationState(temperature);
 
         return String.format(AGGREGATIONSTATE_STRING, this.getName(), aggregationState.getName(), temperature);
     }
 
+    /**
+     * Gets string of object.
+     * @return object formatted as string.
+     */
     @Override
     public final String toString() {
         return "Element{" +
