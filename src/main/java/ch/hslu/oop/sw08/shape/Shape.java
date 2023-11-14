@@ -12,7 +12,7 @@ public abstract class Shape {
      * Gets x-coordinate of object.
      * @return x-coordinate.
      */
-    protected int getX() {
+    protected final int getX() {
         return this.x;
     }
 
@@ -20,7 +20,7 @@ public abstract class Shape {
      * Gets y-coordinate of object.
      * @return y-coordinate.
      */
-    protected int getY() {
+    protected final int getY() {
         return this.y;
     }
 

@@ -85,9 +85,6 @@ public class TemperatureTrend {
      * @return temperature in given unit (0 if collection is empty).
      */
     public static double average(TemperatureUnit unit) {
-        if (TEMPERATURES.isEmpty())
-            return 0;
-
         return TEMPERATURES.stream()
                 .mapToDouble(t -> t.getTemperature(unit))
                 .average()

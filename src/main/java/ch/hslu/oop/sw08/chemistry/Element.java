@@ -9,7 +9,7 @@ public enum Element {
     private final double boilingTemperature;
     private final double fusionTemperature;
 
-    private Element(double boilingTemperature, double fusionTemperature) {
+    Element(double boilingTemperature, double fusionTemperature) {
         this.boilingTemperature = boilingTemperature;
         this.fusionTemperature = fusionTemperature;
     }
