@@ -23,6 +23,14 @@ class TemperatureTest {
     }
 
     @Test
+    void testCopyConstructor() {
+        var newTemperature = new Temperature(DEFAULT_CELSIUS);
+        var temperature = new Temperature(newTemperature);
+
+        assertEquals(DEFAULT_CELSIUS, temperature.getCelsius());
+    }
+
+    @Test
     void testGetTemperatureCelsius() {
         var temperature = new Temperature(DEFAULT_CELSIUS);
 

@@ -10,6 +10,10 @@ public final class Temperature implements Comparable<Temperature> {
         this(20);
     }
 
+    public Temperature(final Temperature temperature) {
+        this(temperature.getCelsius());
+    }
+
     public Temperature(final double celsius) {
         this.setCelsius(celsius);
     }
