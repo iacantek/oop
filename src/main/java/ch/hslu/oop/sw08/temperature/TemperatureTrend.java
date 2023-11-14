@@ -46,7 +46,7 @@ public class TemperatureTrend {
      */
     public static double min(TemperatureUnit unit) {
         if (TEMPERATURES.isEmpty())
-            return 0;
+            return Double.NaN;
 
         return Collections.min(TEMPERATURES).getTemperature(unit);
     }
@@ -66,7 +66,7 @@ public class TemperatureTrend {
      */
     public static double max(TemperatureUnit unit) {
         if (TEMPERATURES.isEmpty())
-            return 0;
+            return Double.NaN;
 
         return Collections.max(TEMPERATURES).getTemperature(unit);
     }
@@ -88,6 +88,6 @@ public class TemperatureTrend {
         return TEMPERATURES.stream()
                 .mapToDouble(t -> t.getTemperature(unit))
                 .average()
-                .orElse(0.0);
+                .orElse(Double.NaN);
     }
 }

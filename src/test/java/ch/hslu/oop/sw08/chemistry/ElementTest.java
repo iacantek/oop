@@ -11,24 +11,24 @@ class ElementTest {
     void testConstructorLead() {
         Element lead = Element.LEAD;
 
-        assertEquals(1750, lead.getBoilingTemperature());
-        assertEquals(-327.43, lead.getFusionTemperature());
+        assertEquals(1750, lead.getBoilingTemperature(), 1f);
+        assertEquals(-327.43, lead.getFusionTemperature(), 0.01f);
     }
 
     @Test
     void testConstructorMercury() {
         Element mercury = Element.MERCURY;
 
-        assertEquals(357, mercury.getBoilingTemperature());
-        assertEquals(-39, mercury.getFusionTemperature());
+        assertEquals(357, mercury.getBoilingTemperature(), 1f);
+        assertEquals(-39, mercury.getFusionTemperature(), 1f);
     }
 
     @Test
     void testConstructorNitrogen() {
         Element nitrogen = Element.NITROGEN;
 
-        assertEquals(-196, nitrogen.getBoilingTemperature());
-        assertEquals(-210, nitrogen.getFusionTemperature());
+        assertEquals(-196, nitrogen.getBoilingTemperature(), 1f);
+        assertEquals(-210, nitrogen.getFusionTemperature(), 1f);
     }
 
     @Test

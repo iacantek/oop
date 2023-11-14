@@ -67,7 +67,7 @@ class TemperatureTrendTest {
 
     @Test
     void testMinNoValues() {
-        assertEquals(0, TemperatureTrend.min());
+        assertEquals(Double.NaN, TemperatureTrend.min());
     }
 
     @Test
@@ -117,7 +117,7 @@ class TemperatureTrendTest {
 
     @Test
     void testMaxNoValues() {
-        assertEquals(0, TemperatureTrend.max());
+        assertEquals(Double.NaN, TemperatureTrend.max());
     }
 
     @Test
@@ -167,7 +167,7 @@ class TemperatureTrendTest {
 
     @Test
     void testAverageNoValues() {
-        assertEquals(0, TemperatureTrend.average());
+        assertEquals(Double.NaN, TemperatureTrend.average());
     }
 
     @Test
