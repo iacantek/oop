@@ -1,6 +1,5 @@
 package ch.hslu.oop.sw10.car;
 
-import ch.hslu.oop.Main;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
