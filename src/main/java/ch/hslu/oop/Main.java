@@ -14,36 +14,36 @@ import java.util.Scanner;
 public class Main {
     private static final Logger LOG = LoggerFactory.getLogger(Main.class);
     public static void main(String[] args) {
-        var collection = new PersonCollection();
-        var collection2 = new PersonCollection();
-
-        for (var i = 0; i < 10; i++) {
-            collection.add(new Person(i, "First " + i, "Last " + i));
-        }
-
-        final Person min = collection.getPeople()
-                .stream()
-                .min(Person::compareTo)
-                .orElse(null);
-
-        final Person max = collection.getPeople()
-                .stream()
-                .max(Person::compareTo)
-                .orElse(null);
-
-        final Person max2 = collection2.getPeople()
-                .stream()
-                .max(Person::compareTo)
-                .orElse(null);
-
-        System.out.println(min);
-        System.out.println(max);
-        System.out.println(max2);
-
-//        var fileName = "sw11_text";
+//        var collection = new PersonCollection();
+//        var collection2 = new PersonCollection();
 //
-//        FileManager.writeTextFile(fileName);
-//        FileManager.readTextFile(fileName);
+//        for (var i = 0; i < 10; i++) {
+//            collection.add(new Person(i, "First " + i, "Last " + i));
+//        }
+//
+//        final Person min = collection.getPeople()
+//                .stream()
+//                .min(Person::compareTo)
+//                .orElse(null);
+//
+//        final Person max = collection.getPeople()
+//                .stream()
+//                .max(Person::compareTo)
+//                .orElse(null);
+//
+//        final Person max2 = collection2.getPeople()
+//                .stream()
+//                .max(Person::compareTo)
+//                .orElse(null);
+//
+//        System.out.println(min);
+//        System.out.println(max);
+//        System.out.println(max2);
+
+        var fileName = "sw11_1";
+
+        FileManager.writeTextFile(fileName);
+        FileManager.readTextFile(fileName);
 
 //        String input;
 //        Scanner scanner = new Scanner(System.in);

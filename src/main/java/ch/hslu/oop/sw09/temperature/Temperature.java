@@ -28,6 +28,22 @@ public final class Temperature implements Comparable<Temperature> {
         return new Temperature(convertFahrenheitToCelsius(fahrenheit));
     }
 
+    public static double convertCelsiusToKelvin(final double celsius) {
+        return celsius + KELVIN_OFFSET;
+    }
+
+    public static double convertCelsiusToFahrenheit(final double celsius) {
+        return celsius * 1.8 + 32;
+    }
+
+    public static double convertKelvinToCelsius(final double kelvin) {
+        return kelvin - KELVIN_OFFSET;
+    }
+
+    public static double convertFahrenheitToCelsius(final double fahrenheit) {
+        return (fahrenheit - 32) / 1.8;
+    }
+
     public double getTemperature(final TemperatureUnit unit) {
         switch (unit) {
             case Celsius -> {
@@ -53,22 +69,6 @@ public final class Temperature implements Comparable<Temperature> {
 
     public double getFahrenheit() {
         return getTemperature(TemperatureUnit.Fahrenheit);
-    }
-
-    public static double convertCelsiusToKelvin(final double celsius) {
-        return celsius + KELVIN_OFFSET;
-    }
-
-    public static double convertCelsiusToFahrenheit(final double celsius) {
-        return celsius * 1.8 + 32;
-    }
-
-    public static double convertKelvinToCelsius(final double kelvin) {
-        return kelvin - KELVIN_OFFSET;
-    }
-
-    public static double convertFahrenheitToCelsius(final double fahrenheit) {
-        return (fahrenheit - 32) / 1.8;
     }
 
     @Override

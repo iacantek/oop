@@ -31,33 +31,33 @@ class TemperatureTest {
 
     @Test
     void testCreateFromCelsiusInvalidTemperature() {
-        final Double temperature = -KELVIN_OFFSET - 1;
+        final double temperature = -KELVIN_OFFSET - 1;
         final Exception e =
-            assertThrows(IllegalArgumentException.class, () -> {
-                Temperature.createFromCelsius(temperature);
-            });
+                assertThrows(IllegalArgumentException.class, () -> {
+                    Temperature.createFromCelsius(temperature);
+                });
 
         assertEquals("Not a valid temperature: " + temperature + "°C", e.getMessage());
     }
 
     @Test
     void testCreateFromKelvinInvalidTemperature() {
-        final Double temperature = -KELVIN_OFFSET - 1;
+        final double temperature = -KELVIN_OFFSET - 1;
         final Exception e =
-            assertThrows(IllegalArgumentException.class, () -> {
-                Temperature.createFromKelvin(Temperature.convertCelsiusToKelvin(temperature));
-            });
+                assertThrows(IllegalArgumentException.class, () -> {
+                    Temperature.createFromKelvin(Temperature.convertCelsiusToKelvin(temperature));
+                });
 
         assertEquals("Not a valid temperature: " + temperature + "°C", e.getMessage());
     }
 
     @Test
     void testCreateFromFahrenheitInvalidTemperature() {
-        final Double temperature = -KELVIN_OFFSET - 1;
+        final double temperature = -KELVIN_OFFSET - 1;
         final Exception e =
-            assertThrows(IllegalArgumentException.class, () -> {
-                Temperature.createFromFahrenheit(Temperature.convertCelsiusToFahrenheit(temperature));
-            });
+                assertThrows(IllegalArgumentException.class, () -> {
+                    Temperature.createFromFahrenheit(Temperature.convertCelsiusToFahrenheit(temperature));
+                });
 
         assertEquals("Not a valid temperature: " + temperature + "°C", e.getMessage());
     }
