@@ -8,10 +8,11 @@ import java.nio.charset.Charset;
 
 public class FileManager {
     private static final Logger LOG = LoggerFactory.getLogger(FileManager.class);
-    public static void writeTextFile(String fileName) {
+
+    public static void writeTextFile(String fileName, Object input) {
         var path = getFullPath(fileName);
 
-        // create file if it doesn't exit
+        // create file if it doesn't exist
         var file = new File(path);
         if (!new File(path).exists()) {
             try {
@@ -24,12 +25,8 @@ public class FileManager {
 
         try (PrintWriter pw =
                      new PrintWriter(new BufferedWriter(new OutputStreamWriter(
-                             new FileOutputStream(path), Charset.forName("UTF-8"))));
-        ) {
-            pw.println(4);
-            pw.println("hello");
-            pw.println(true);
-            pw.flush();
+                             new FileOutputStream(path, true), Charset.forName("UTF-8"))))) {
+            pw.println(input);
         } catch (IOException ioe) {
             LOG.error(ioe.getMessage(), ioe);
         }
@@ -41,8 +38,7 @@ public class FileManager {
         if (new File(path).exists()) {
             try (BufferedReader br =
                          new BufferedReader(new InputStreamReader(
-                                 new FileInputStream(path), Charset.forName("UTF-8")))
-            ) {
+                                 new FileInputStream(path), Charset.forName("UTF-8")))) {
                 String line;
                 while ((line = br.readLine()) != null) {
                     System.out.println(line);
@@ -50,6 +46,8 @@ public class FileManager {
             } catch (IOException ioe) {
                 LOG.error(ioe.getMessage(), ioe);
             }
+        } else {
+            LOG.error("File does not exist!");
         }
     }
 

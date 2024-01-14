@@ -13,6 +13,7 @@ import java.util.Scanner;
 
 public class Main {
     private static final Logger LOG = LoggerFactory.getLogger(Main.class);
+
     public static void main(String[] args) {
 //        var collection = new PersonCollection();
 //        var collection2 = new PersonCollection();
@@ -40,34 +41,37 @@ public class Main {
 //        System.out.println(max);
 //        System.out.println(max2);
 
-        var fileName = "sw11_1";
+        var fileName = "temperatures.bin";
 
-        FileManager.writeTextFile(fileName);
+        String input;
+        Scanner scanner = new Scanner(System.in);
+
+        TemperatureTrend.addPropertyChangeListener(Main::handleEvent);
+
+        do {
+            System.out.println("Bitte Temperatur in Celsius eingeben (oder 'exit' zum Beenden): ");
+            input = scanner.next();
+            String message;
+            try {
+                var temperature = Temperature.createFromCelsius(Double.parseDouble(input));
+                TemperatureTrend.add(temperature);
+                message = temperature.toString();
+                LOG.info(message);
+            } catch (Exception ex) {
+                message = "Not a valid input: " + input;
+                LOG.error(message);
+            }
+        } while (!"exit".equals(input));
+
+        System.out.println("Programm beendet.");
+        System.out.println(new TemperatureTrend());
+
+        FileManager.writeTextFile(fileName, TemperatureTrend.getCount());
+        for (Temperature temperature : TemperatureTrend.getTemperatures()) {
+            FileManager.writeTextFile(fileName, temperature.getCelsius());
+        }
+
         FileManager.readTextFile(fileName);
-
-//        String input;
-//        Scanner scanner = new Scanner(System.in);
-//
-//        TemperatureTrend.addPropertyChangeListener(Main::handleEvent);
-//
-//        do {
-//            System.out.println("Bitte Temperatur in Celsius eingeben (oder 'exit' zum Beenden): ");
-//            input = scanner.next();
-//            String message;
-//            try {
-//                var temperature = Temperature.createFromCelsius(Double.parseDouble(input));
-//                TemperatureTrend.add(temperature);
-//                message = temperature.toString();
-//                LOG.info(message);
-//            }
-//            catch (Exception ex) {
-//                message = "Not a valid input: " + input;
-//                LOG.error(message);
-//            }
-//        } while (!"exit".equals(input));
-//
-//        System.out.println("Programm beendet.");
-//        System.out.println(new TemperatureTrend());
     }
 
     private static void handleEvent(final PropertyChangeEvent e) {

@@ -7,7 +7,7 @@ public class PersonCollection {
     private final Collection<Person> people;
 
     public PersonCollection() {
-        this.people = new ArrayList();
+        this.people = new ArrayList<>();
     }
 
     public final Collection<Person> getPeople() {
