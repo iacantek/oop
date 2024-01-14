@@ -9,7 +9,17 @@ public class TemperatureTrend extends TemperatureEvent {
     private static final Collection<Temperature> TEMPERATURES = new ArrayList<>();
 
     /**
+     * Returns all saved temperatures.
+     *
+     * @return array list of temperature objects
+     */
+    public static Collection<Temperature> getTemperatures() {
+        return TEMPERATURES;
+    }
+
+    /**
      * Adds temperature object to collections.
+     *
      * @param temperature object to add.
      */
     public static void add(Temperature temperature) {
@@ -41,6 +51,7 @@ public class TemperatureTrend extends TemperatureEvent {
 
     /**
      * Gets number of objects in collection.
+     *
      * @return collection size.
      */
     public static int getCount() {
@@ -49,15 +60,16 @@ public class TemperatureTrend extends TemperatureEvent {
 
     /**
      * Gets minimal temperature.
+     *
      * @return temperature in celsius (0 if collection is empty).
      */
-    public static double min()
-    {
+    public static double min() {
         return min(TemperatureUnit.Celsius);
     }
 
     /**
      * Gets minimal temperature.
+     *
      * @param unit celsius, kelvin or fahrenheit.
      * @return temperature in given unit (0 if collection is empty).
      */
@@ -70,6 +82,7 @@ public class TemperatureTrend extends TemperatureEvent {
 
     /**
      * Gets maximal temperature.
+     *
      * @return temperature in celsius (0 if collection is empty).
      */
     public static double max() {
@@ -78,6 +91,7 @@ public class TemperatureTrend extends TemperatureEvent {
 
     /**
      * Gets maximal temperature.
+     *
      * @param unit celsius, kelvin or fahrenheit.
      * @return temperature in given unit (0 if collection is empty).
      */
@@ -90,6 +104,7 @@ public class TemperatureTrend extends TemperatureEvent {
 
     /**
      * Gets average temperature in collection.
+     *
      * @return temperature in celsius (0 if collection is empty).
      */
     public static double average() {
@@ -98,6 +113,7 @@ public class TemperatureTrend extends TemperatureEvent {
 
     /**
      * Gets average temperature in collection.
+     *
      * @param unit celsius, kelvin or fahrenheit.
      * @return temperature in given unit (0 if collection is empty).
      */
